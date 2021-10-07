@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import { TaskItem } from './TaskItem';
+import { useState } from 'react';
 
 function App() {
   const [ tasks, setTasks ] = useState([
