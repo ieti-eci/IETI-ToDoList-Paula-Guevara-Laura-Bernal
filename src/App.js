@@ -2,7 +2,7 @@ import { TaskItem } from './TaskItem';
 import { useState } from 'react';
 
 function App() {
-  const [tasks, setTasks] = useState([
+  const [ tasks, setTasks ] = useState([
     {isCompleted: false, taskName: 'task name'}]);
 
   const [textValue, setValue] = useState('');
@@ -24,23 +24,23 @@ function App() {
   const handleSubmit = (event) =>{
     event.preventDefault();
     createTask(textValue); 
-  };
+  }
 
-return(
-<main>
-			<form onSubmit={handleSubmit}>
-				<input value={textValue} onChange={handleChange} type="text" placeholder="task name" />
-				<button>Create Task</button>
-			</form>
-      <ul>
-				{tasks.map((task, index) => {
-					return (
-						<TaskItem
-							isChecked={task.isCompleted}
-							taskName={task.taskName}
-						/>
-					);
-				})}
+  return(
+    <main>
+	<form onSubmit={handleSubmit}>
+		<input value={textValue} onChange={handleChange} type="text" placeholder="task name" />
+		<button>Create Task</button>
+	</form>
+        <ul>
+		{tasks.map((task, index) => {
+			return (
+				<TaskItem
+					isChecked={task.isCompleted}
+					taskName={task.taskName}
+				/>
+				);
+			})}
 			</ul>
 		</main>
 );
