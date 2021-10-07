@@ -8,4 +8,8 @@ function App() {
   const [ textValue, setValue] = useState("");
 }
 
+  const handleChange = (event)=>{
+    const textValue = event.target.value;
+    setTasks(textValue);
+  }
 export default App;
