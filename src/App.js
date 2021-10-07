@@ -25,4 +25,20 @@ function App() {
     event.preventDefault();
     createTask(textValue); 
   };
-export default App;
+
+<main>
+			<form onSubmit={handleSubmit}>
+				<input value={textValue} onChange={handleChange} type="text" placeholder="task name" />
+				<button>Create Task</button>
+			</form>
+      <ul>
+				{tasks.map((task, index) => {
+					return (
+						<TaskItem
+							isChecked={task.isCompleted}
+							taskName={task.taskName}
+						/>
+					);
+				})}
+			</ul>
+		</main>
