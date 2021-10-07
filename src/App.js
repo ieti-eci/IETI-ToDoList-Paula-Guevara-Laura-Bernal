@@ -2,11 +2,11 @@ import { TaskItem } from './TaskItem';
 import { useState } from 'react';
 
 function App() {
-  const [ tasks, setTasks ] = useState([
-    { isCompleted: false, taskName: 'task name' }]);
+  const [tasks, setTasks] = useState([
+    {isCompleted: false, taskName: 'task name'}]);
 
-  const [textValue, setValue] = useState("");
-}
+  const [textValue, setValue] = useState('');
+
 
   const handleChange = (event)=>{
     const textValue = event.target.value;
@@ -26,6 +26,7 @@ function App() {
     createTask(textValue); 
   };
 
+return(
 <main>
 			<form onSubmit={handleSubmit}>
 				<input value={textValue} onChange={handleChange} type="text" placeholder="task name" />
@@ -42,3 +43,6 @@ function App() {
 				})}
 			</ul>
 		</main>
+);
+}
+export default App;
