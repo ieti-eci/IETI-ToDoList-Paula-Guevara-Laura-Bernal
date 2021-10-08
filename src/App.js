@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { TaskItem } from './TaskItem';
+import { useState } from 'react';
 
 function App() {
+  const [ tasks, setTasks ] = useState([
+    { isCompleted: false, taskName: 'learn React' }]);
+
+  const [ texValue, setValue] = useState("");
+
+  const createTask = (taskName) => {
+    const newTask = {
+      isCompleted: false,
+      taskName: taskName,
+    }
+    setTasks([...tasks, newTask])
+  } 
+
+  const handleSubmit = (event) =>{
+    event.preventDefault();
+    createTask(texValue); 
+  };
+
+  const handleChange = (event)=>{
+    const taskValue = event.target.value;
+    setValue(taskValue);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+			<form onSubmit={handleSubmit}>
+				<input value={texValue} onChange={handleChange} type="text" placeholder="task name" />
+				<button>Create Task</button>
+			</form>
+      <ul>
+				{tasks.map((task, index) => {
+					return (
+						<TaskItem
+							isChecked={task.isCompleted}
+							taskName={task.taskName}
+						/>
+					);
+				})}
+			</ul>
+		</main>
+);
 }
 
 export default App;
