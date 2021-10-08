@@ -1,4 +1,4 @@
-
+import { TaskItem } from './TaskItem';
 import { useState } from 'react';
 
 function App() {
@@ -34,7 +34,10 @@ function App() {
       <ul>
 				{tasks.map((task, index) => {
 					return (
-						<span>class task item</span>
+						<TaskItem
+							isChecked={task.isCompleted}
+							taskName={task.taskName}
+						/>
 					);
 				})}
 			</ul>
